@@ -26,4 +26,7 @@ jobs:
       - name:  Copy index.html to s3
         run: |
           aws sts get-caller-identity
+      - name:  Get bucket list
+        run: |
+           aws s3 ls --region ${{env.AWS_REGION}}
 
