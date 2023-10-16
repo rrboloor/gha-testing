@@ -1,0 +1,25 @@
+
+on: 
+  push
+env:
+  AWS_REGION: "us-east-1"
+#permissions can be added at job level or workflow level
+permissions: 
+  id-token: write   #this is required for requesting the JWT
+  contents: read    #this is required for actions/checkout
+
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - name: Check AWS connection
+      uses: actions/checkout@V4
+    - name: configure aws credentials
+      uses: aws/actions/configure-aws-credentials@v4
+      with: 
+          role-to-assume: arn:aws:iam::778570468836:role/github_actions_role
+          role-session-name: samplerolesession
+          aws-region: ${{env.AWS_REGION}}
+    - name: list buckets.
+      run :
+          aws sts get-caller-identity
+
