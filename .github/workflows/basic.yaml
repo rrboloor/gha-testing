@@ -9,6 +9,7 @@ permissions:
   contents: read    #this is required for actions/checkout
 
 jobs:
+  AWS Credential Checker
   runs-on: ubuntu-latest
   steps:
     - name: Check AWS connection
