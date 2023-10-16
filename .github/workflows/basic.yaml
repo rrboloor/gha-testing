@@ -29,6 +29,5 @@ jobs:
       - name:  Get bucket list
         run: |
            aws s3 ls --region ${{env.AWS_REGION}}
-           cat ~/.aws/credentials
-           cat ~/.aws/config
+           echo ${{env.AWS_ACCESS_KEY_ID}}
 
